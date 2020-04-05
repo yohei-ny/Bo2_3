@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bo2</title>
+    <title>Booker2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+<header>
+    <div style="background-color: black;height: 60px;">
+      <div class="container">
+        <div class="row" >
+          <div class="col-xs-6" >
+            <span style="color: white">
+              <h3>Bookers</h3>
+            </span>
+          </div>
+             <div class="col-xs-4"></div>
+          <% if user_signed_in? %>
+          <div class="col-xs-6">
+            <nav class="nav navbar-nav navbar-right" role-"tablist">
+              <li>
+                <%= link_to"Home", user_path(current_user.id), class: "glyphicon glyphicon-home" %>
 
-  <body>
-    <%= yield %>
-  </body>
+              </li>
+              <li>
+                <%= link_to"Users", users_path,class: "glyphicon glyphicon-user" %>
+              </li>
+              <li>
+                <%= link_to "Books", books_path,class: "glyphicon glyphicon-book" %>
+              </li>
+              <li>
+                <%= link_to"logout", destroy_user_session_path, method: :delete,class: "glyphicon glyphicon-share" %>
+              </li>
+            </nav>
+          </div>
+          <% else %>
+          <div class="col-xs-6">
+            <nav class="nav navbar-nav navbar-right" role-"tablist">
+              <li>
+                <%= link_to"Home", root_path, class: "glyphicon glyphicon-home"  %>
+                      </li>
+              <li>
+                <%= link_to"About",home_about_path,class: "glyphicon glyphicon-link" %>
+              </li>
+              <li>
+                <%= link_to"Sign up", new_user_registration_path, class: "glyphicon glyphicon-edit"%>
+              </li>
+              <li>
+                <%= link_to"login" ,new_user_session_path , class: "glyphicon glyphicon-share"%>
+              </li>
+              <% end %>
+            </nav>
+          </div>
+        </div>
+</div>
+  </div>
+  <%= yield %>
+  </header>
+
 </html>
