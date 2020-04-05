@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 	before_action :authenticate_user!
-    before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
   def index
   	@book =Book.new
     @books =Book.all
@@ -12,6 +12,7 @@ class BooksController < ApplicationController
   	if @book.save
   	redirect_to book_path(@book)
   else
+    @user =current_user
     @books =Book.all
   	render :index
   end
