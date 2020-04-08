@@ -1,0 +1,18 @@
+<h2>New book</h2>
+	<%= form_for(book) do |f| %>
+		<div class="block">
+			<%= f.label :Title %>
+		</div>
+		<div class="block">
+			<%= f.text_field :title %>
+		</div>
+		<div class="block">
+			<%= f.label :Opinion %>
+		</div>
+		<div class="block">
+			<%= f.text_area :body %>
+		</div>
+		<div class="actions row">
+    <%= f.submit class: 'btn btn-primary col-xs-12'%>
+  </div>
+<% end %>

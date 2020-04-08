@@ -13,16 +13,11 @@
 ActiveRecord::Schema.define(version: 2020_04_04_075943) do
 
   create_table "books", force: :cascade do |t|
-    t.text "title"
+    t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_id"
-  end
-
-  create_table "homes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

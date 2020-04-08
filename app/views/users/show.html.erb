@@ -1,19 +1,13 @@
 <div class="container">
-<%= render 'layouts/form', user: @user, book: @book %>
-<div class="col-xs-9">
+    <div class="row">
+    <div class="col-xs-3">
+<%= render 'info', user: @user %>
+
+<%= render 'books/form', book: @book %>
 </div>
-<h2>Books</h2>
-		    <table class="table">
-		        <tr>
-			    	<th>image</th>
-				    <th>Title</th>
-				    <th>Opinion</th>
-			    </tr>
-			    <% @books.each do |f| %>
-			     <tr>
-			    	<td><%= link_to attachment_image_tag(f.user, :profile_image, :fiil,60,60, format: 'jpeg', fallback: "no_image.jpg"), user_path(f.user) %></td>
-				    <td><%= link_to f.title, book_path(f) %></td>
-				    <td><%= f.body %></td>
-			    </tr>
-			    <% end %>
+<div class="col-xs-9">
+<%= render 'books/table', books: @books %>
 			</table>
+		</div>
+	</div>
+</div>
