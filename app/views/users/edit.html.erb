@@ -1,13 +1,7 @@
 <h1>Users#edit</h1>
 <div class="container">
-	<% if @user.errors.any? %>
-		  	<h2><%= @user.errors.count %>error occurence</h2>
-		  	<ul>
-		  		<% @user.errors.full_messages.each do |message| %>
-		  		  <li><%= message %></li>
-		  		<% end %>
-		  	</ul>
-		  	<% end %>
+	<%= render 'error', user: @user %>
+
 <h1>User info</h1>
 <%= form_for(@user) do |f| %>
 	   <div>
@@ -25,3 +19,5 @@
 	     	</div>
 	   		<% end %>
 	    </div>
+
+

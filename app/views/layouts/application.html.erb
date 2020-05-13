@@ -8,21 +8,18 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-<header>
-    <div style="background-color: black;height: 60px;">
+    <div style="height: 60px;">
+      <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
-        <div class="row" >
-          <div class="col-xs-6" >
-            <span style="color: white">
-              <h3>Bookers</h3>
-            </span>
-          </div>
-             <div class="col-xs-4"></div>
+              <nav class='nav navbar-nav navbar-left' >
+      <span style='color: white;font-size: 30px;'>Bookers</span>
+    </nav>
+     <div class="collapse navbar-collapse" id="Navbar">
+    <nav>
+              <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
-          <div class="col-xs-6">
-            <nav class="nav navbar-nav navbar-right" role-"tablist">
               <li>
-                <%= link_to"Home", user_path(current_user.id), class: "glyphicon glyphicon-home" %>
+                <%= link_to"Home", user_path(current_user), class: "glyphicon glyphicon-home" %>
 
               </li>
               <li>
@@ -34,11 +31,7 @@
               <li>
                 <%= link_to"logout", destroy_user_session_path, method: :delete,class: "glyphicon glyphicon-share" %>
               </li>
-            </nav>
-          </div>
           <% else %>
-          <div class="col-xs-6">
-            <nav class="nav navbar-nav navbar-right" role-"tablist">
               <li>
                 <%= link_to"Home", root_path, class: "glyphicon glyphicon-home"  %>
                       </li>
@@ -52,13 +45,15 @@
                 <%= link_to"login" ,new_user_session_path , class: "glyphicon glyphicon-share"%>
               </li>
               <% end %>
+            </ul>
             </nav>
           </div>
         </div>
-</div>
-  </div>
-  <%= yield %>
-  </header>
-  <p id="notice"><%= notice %></p>
+      </nav>
+      </div>
 
+  <%= yield %>
+  <body>
+  
+</body>
 </html>

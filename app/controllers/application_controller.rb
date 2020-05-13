@@ -5,7 +5,6 @@ def after_sign_in_path_for(resource)
 end
 def after_sign_out_for(resource)
 	user_path(resource)
-flash[:notice] = 'successfully'
 end
 
   protected

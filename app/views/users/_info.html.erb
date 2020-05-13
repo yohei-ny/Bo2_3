@@ -1,6 +1,9 @@
 <div class="user-information">
 		<h1>User info</h1>
 		<%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %>
+		<%= hidden_field_tag :id,value: @user%>
+
+		<%#= f.hidden_field :item_id, value: @item.id %>
 		<table class="table">
 			<thead>
 				<tr>
