@@ -2,18 +2,19 @@ class BooksController < ApplicationController
 	before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update]
   def index
-    @books =Book.all
+    @books =Book.page(params[:page]).reverse_order
     @book =Book.new
     @user =current_user
   end
   def create
   	@book =Book.new(book_params)
-  	@book.user_id = current_user.id
+  	@book.user = current_user
+    @user =current_user
   	if @book.save
       flash[:notice] = 'successfully'
   	redirect_to book_path(@book)
   else
-    @books =Book.all
+    @books =Book.page(params[:page]).reverse_order
   	render :index
   end
 end

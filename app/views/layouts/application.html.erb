@@ -17,7 +17,7 @@
      <div class="collapse navbar-collapse" id="Navbar">
     <nav>
               <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
+          #<% if user_signed_in? %>
               <li>
                 <%= link_to"Home", user_path(current_user), class: "glyphicon glyphicon-home" %>
 
@@ -31,6 +31,14 @@
               <li>
                 <%= link_to"logout", destroy_user_session_path, method: :delete,class: "glyphicon glyphicon-share" %>
               </li>
+          <%= form_with(url: search_path,method: :get,local: true) do |f| %>
+          <%= f.text_field :search %>
+          <%= f.select :model , options_for_select({User: :user,Book: :book })%>
+          <%= f.select :how , options_for_select({完全一致: :"0",前方一致: :"1",後方一致: :"2",部分一致: :"3" })%>
+           <%#= f.select :search[model], options_for_select({ "User" => "user", "Post" => "post" }) } %>
+          <%= f.submit 'Search'%>
+   <!--        , :name =>nil,class: "btn"  -->
+          <% end %>
           <% else %>
               <li>
                 <%= link_to"Home", root_path, class: "glyphicon glyphicon-home"  %>
@@ -51,7 +59,7 @@
         </div>
       </nav>
       </div>
-
+ <p id="notice"><%= notice %></p>
   <%= yield %>
   <body>
   

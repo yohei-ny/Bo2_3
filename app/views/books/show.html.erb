@@ -8,29 +8,7 @@
 <%= render 'users/info', user: @mybook.user %>
 <%= render 'form', book: @book %>
 </div>
-<div class="col-xs-9">
-			<h2>Book detail</h2>
-			<table class="table">
-				<tr>
-					<th scope="row">
-						<td>
-    				<%= link_to user_path(@user) do %>
-    				<%= attachment_image_tag @user, :profile_image,format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %>
-    				</br>
-							<%= @user.name %>
-							<% end %>
-						</td>
-					    <td><%= @mybook.title %></td>
-					    <td><%= @mybook.body %></td>
-			    		<td>
-			    			<% if @mybook.user == current_user %>
-				    		<td><%= link_to "Edit", edit_book_path(@mybook) %></td>
-							<td><%= link_to "Destroy", book_path(@mybook), method: :delete,"data-confirm" =>"本当に削除しますか?" %></td>
-			    		</td>
-			    		<% end %>
-					</th>
-				</tr>
-			</table>
-		</div>
-	</div>
+
+	<%= render 'tables', mybook: @mybook,user: @user %>
+
 </div>
