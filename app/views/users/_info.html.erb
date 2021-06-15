@@ -1,48 +1,45 @@
 <div class="user-information">
-		<h1>User info</h1>
-		<%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %>
-		<%= hidden_field_tag :id,value: @user%>
+  <h1>User info</h1>
+  <%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "60x60" %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
 
-		<%#= f.hidden_field :item_id, value: @item.id %>
-		<table class="table">
-			<thead>
-				<tr>
-					<th colspan="2"></th>
-				</tr>
-			</thead>
+    <tbody>
+      <tr>
+        <td>name</td>
+        <td><%= user.name %></td>
+      </tr>
+      <tr>
+        <td>introduction</td>
+        <td><%= user.introduction %></td>
+      </tr>
+      <tr>
+        <td>フォロワー</td>
+        <td><%= link_to user.followed.count ,user_followed_path(user)%></td>
+      </tr>
+      <tr>
+        <td>フォロー</td>
+        <td><%= link_to user.following.count ,user_follower_path(user)%></td>
+      </tr>
+    </tbody>
+  </table>
 
-			<tbody>
-				<tr>
-					<td>name</td>
-					<td><%= user.name %></td>
-				</tr>
-				<tr>
-					<td>introduction</td>
-					<td><%= user.introduction %></td>
-				</tr>
-				<tr>
-					<td>フォロワー</td>
-					<td><%= link_to user.followed.count ,user_followed_path(user)%></td>
-				</tr>
-				<tr>
-					<td>フォロー</td>
-					<td><%= link_to user.following.count ,user_follower_path(user)%></td>
-		
-				</tr>
-			</tbody>
-		</table>
+  <% if current_user != user %>
+  <%= link_to "#{@user.name}とchatを始める", user_chats_room_path(@user) %>
 
-		<% if current_user != user %>
-  		<% if current_user.following?(user) %>
-			<%= link_to "unfollow", user_relationship_path(user),method: :delete ,class:"btn btn-primary"%>
-			<% else %>
-			<%= link_to "follow", user_relationships_path(user),method: :post, class:"btn btn-primary" %>
-
-				<% end %>
-				<% end %>
-		<% if user == current_user %>
-		<%= link_to edit_user_path(user) do %>
-				<span class="btn btn-sm btn-default btn-block glyphicon glyphicon-wrench" aria-hidden="true"></span>
-				<% end %>
-				<% end %>
+  <% if current_user.following?(user) %>
+  <%= link_to "unfollow", user_relationship_path(user),method: :delete ,class:"btn btn-primary"%>
+  <% else %>
+  <%= link_to "follow", user_relationships_path(user),method: :post, class:"btn btn-primary" %>
+  <% end %>
+  <% end %>
+  <% if user == current_user %>
+  <%= link_to edit_user_path(user) do %>
+  <span class="btn btn-sm btn-default btn-block glyphicon glyphicon-wrench" aria-hidden="true"></span>
+  <% end %>
+  <% end %>
 </div>

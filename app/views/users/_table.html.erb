@@ -1,26 +1,27 @@
 
 <div class="col-xs-9">
       <h2>Users</h2>
-<table class='table'>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
+  <table class='table'>
+    <thead>
       <tr>
-        <td><%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %></td>
-        <td><%= user.name %></td>
-        <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+        <th>image</th>
+        <th>name</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
+    </thead>
+  <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td><%#= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "40x40" %></td>
+          <td><%= user.name %></td>
+          <td><%= link_to 'Show', user, class: "user_#{user.id}" %></td>
+        </tr>
+      <% end %>
   </tbody>
-</table>
-<div style="text-align: center;">
+  </table>
+  <div style="text-align: center;">
     <% if params[:model] != "user" %>
       <%= paginate users, class: "pagenate" %>
       <% end %>
-    </div>
+  </div>
+</div>

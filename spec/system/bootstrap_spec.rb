@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'boostrapのテスト' do
+describe 'bootstrapのテスト' do
 	let(:user) { create(:user) }
 	let!(:book) { create(:book, user: user) }
 	describe 'グリッドシステムのテスト' do

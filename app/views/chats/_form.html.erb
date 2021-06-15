@@ -1,0 +1,5 @@
+<%= form_with model:Chat.new ,url: user_chats_path(user) do |f| %>
+<%= f.text_area :message %>
+<%= f.submit :submit %>
+<%= f.hidden_field :room_id ,value: room.id%>
+<% end %>

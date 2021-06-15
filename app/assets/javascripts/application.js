@@ -36,8 +36,6 @@ $(document).on("turbolinks:load", function(){
 
     // # 郵便番号の入力欄が3桁-4桁で分かれている場合
     // postcode : [ '#zipcode1', '#zipcode2' ]
-
-
     // # 入力項目フォーマット
     // #   %3  都道府県
     // #   %4  市区町村
@@ -45,7 +43,7 @@ $(document).on("turbolinks:load", function(){
     // #   %6  大口事業所の番地
     // #   %7  大口事業所の名称
     address  : {
-      "#user_prefecture_code" : "%3",
+      "#user_prefecture_code" : "%p",
       // # 都道府県が入力される
       "#address_city"            : "%4%5",
        // # 市区町村と町域が入力される
